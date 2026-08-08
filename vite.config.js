@@ -4,24 +4,24 @@ import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+    plugins: [
+        react(),
+        tailwindcss(),
+    ],
 
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    resolve: {
+        alias: {
+            "@": fileURLToPath(new URL("./src", import.meta.url)),
+        },
     },
-  },
 
-  server: {
-    host: true,
-    port: 5173,
-  },
+    server: {
+        host: true,
+        port: 5173,
+    },
 
-  preview: {
-    host: true,
-    port: 4173,
-  },
+    preview: {
+        host: true,
+        port: 4173,
+    },
 });

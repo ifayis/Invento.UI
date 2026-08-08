@@ -1,14 +1,13 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import AuthLayout from "@/layouts/AuthLayout";
-import DashboardLayout from "@/layouts/DashboardLayout";
+import AuthLayout from "@/components/layouts/AuthLayout";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 
-import LoginPage from "@/pages/auth/LoginPage";
-import DashboardPage from "@/pages/dashboard/DashboardPage";
-import NotFoundPage from "@/pages/errors/NotFoundPage";
+import LoginPage from "@/features/auth/pages/LoginPage";
+import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 
+import NotFoundPage from "@/features/errors/pages/NotFoundPage";
 import ProtectedRoute from "./ProtectedRoute";
-
 const AppRouter = () => {
     return (
         <Routes>
