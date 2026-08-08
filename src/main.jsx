@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 
 import App from "./App";
+import ThemeProvider from "./theme/ThemeProvider";
 import { store } from "./store";
 
 import "./index.css";
@@ -13,20 +14,22 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <Provider store={store}>
             <BrowserRouter>
-                <App />
+                <ThemeProvider>
+                    <App />
 
-                <Toaster
-                    position="top-right"
-                    reverseOrder={false}
-                    gutter={12}
-                    toastOptions={{
-                        duration: 3500,
-                        style: {
-                            borderRadius: "12px",
-                            fontSize: "14px",
-                        },
-                    }}
-                />
+                    <Toaster
+                        position="top-right"
+                        reverseOrder={false}
+                        gutter={12}
+                        toastOptions={{
+                            duration: 3500,
+                            style: {
+                                borderRadius: "12px",
+                                fontSize: "14px",
+                            },
+                        }}
+                    />
+                </ThemeProvider>
             </BrowserRouter>
         </Provider>
     </React.StrictMode>
