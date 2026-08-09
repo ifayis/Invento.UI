@@ -1,61 +1,65 @@
 import { STORAGE_KEYS } from "@/constants/storage";
 
+const getStorage = () => {
+    return sessionStorage;
+};
+
 export const authStorage = {
     getAccessToken() {
-        return sessionStorage.getItem(
+        return getStorage().getItem(
             STORAGE_KEYS.ACCESS_TOKEN
         );
     },
 
     setAccessToken(token) {
         if (!token) {
-            sessionStorage.removeItem(
+            getStorage().removeItem(
                 STORAGE_KEYS.ACCESS_TOKEN
             );
 
             return;
         }
 
-        sessionStorage.setItem(
+        getStorage().setItem(
             STORAGE_KEYS.ACCESS_TOKEN,
             token
         );
     },
 
     getRefreshToken() {
-        return sessionStorage.getItem(
+        return getStorage().getItem(
             STORAGE_KEYS.REFRESH_TOKEN
         );
     },
 
     setRefreshToken(token) {
         if (!token) {
-            sessionStorage.removeItem(
+            getStorage().removeItem(
                 STORAGE_KEYS.REFRESH_TOKEN
             );
 
             return;
         }
 
-        sessionStorage.setItem(
+        getStorage().setItem(
             STORAGE_KEYS.REFRESH_TOKEN,
             token
         );
     },
 
     clear() {
-        sessionStorage.removeItem(
+        getStorage().removeItem(
             STORAGE_KEYS.ACCESS_TOKEN
         );
 
-        sessionStorage.removeItem(
+        getStorage().removeItem(
             STORAGE_KEYS.REFRESH_TOKEN
         );
     },
 
     hasAccessToken() {
         return Boolean(
-            sessionStorage.getItem(
+            getStorage().getItem(
                 STORAGE_KEYS.ACCESS_TOKEN
             )
         );
