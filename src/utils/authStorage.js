@@ -1,8 +1,6 @@
 import { STORAGE_KEYS } from "@/constants/storage";
 
-const getStorage = () => {
-    return sessionStorage;
-};
+const getStorage = () => sessionStorage;
 
 export const authStorage = {
     getAccessToken() {
@@ -47,6 +45,27 @@ export const authStorage = {
         );
     },
 
+    getExpiresAt() {
+        return getStorage().getItem(
+            STORAGE_KEYS.EXPIRES_AT
+        );
+    },
+
+    setExpiresAt(value) {
+        if (!value) {
+            getStorage().removeItem(
+                STORAGE_KEYS.EXPIRES_AT
+            );
+
+            return;
+        }
+
+        getStorage().setItem(
+            STORAGE_KEYS.EXPIRES_AT,
+            value
+        );
+    },
+
     clear() {
         getStorage().removeItem(
             STORAGE_KEYS.ACCESS_TOKEN
@@ -54,6 +73,10 @@ export const authStorage = {
 
         getStorage().removeItem(
             STORAGE_KEYS.REFRESH_TOKEN
+        );
+
+        getStorage().removeItem(
+            STORAGE_KEYS.EXPIRES_AT
         );
     },
 

@@ -5,6 +5,14 @@ import {
 
 import { authStorage } from "@/utils/authStorage";
 
+import {
+    clearCredentials,
+} from "@/features/auth/authSlice";
+
+import {
+    refreshSession,
+} from "@/features/auth/refreshManager";
+
 const rawBaseQuery = fetchBaseQuery({
     baseUrl:
         import.meta.env.VITE_API_BASE_URL || "",
@@ -29,10 +37,65 @@ const rawBaseQuery = fetchBaseQuery({
     },
 });
 
+const baseQueryWithReauth = async (
+    args,
+    api,
+    extraOptions
+) => {
+    let result = await rawBaseQuery(
+        args,
+        api,
+        extraOptions
+    );
+
+    if (
+        result.error &&
+        result.error.status === 401
+    ) {
+        try {
+            const session =
+                await refreshSession();
+
+            if (session) {
+                result = await rawBaseQuery(
+                    args,
+                    api,
+                    extraOptions
+                );
+
+                if (
+                    result.error &&
+                    result.error.status === 401
+                ) {
+                    authStorage.clear();
+
+                    api.dispatch(
+                        clearCredentials()
+                    );
+                }
+            } else {
+                authStorage.clear();
+
+                api.dispatch(
+                    clearCredentials()
+                );
+            }
+        } catch {
+            authStorage.clear();
+
+            api.dispatch(
+                clearCredentials()
+            );
+        }
+    }
+
+    return result;
+};
+
 export const baseApi = createApi({
     reducerPath: "api",
 
-    baseQuery: rawBaseQuery,
+    baseQuery: baseQueryWithReauth,
 
     tagTypes: [
         "Auth",

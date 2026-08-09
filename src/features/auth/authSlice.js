@@ -4,9 +4,15 @@ import { authStorage } from "@/utils/authStorage";
 
 const initialState = {
     user: null,
-    isAuthenticated: authStorage.hasAccessToken(),
+
+    isAuthenticated:
+        authStorage.hasAccessToken(),
+
     isInitialized: false,
-    sessionExpiresAt: null,
+
+    sessionExpiresAt:
+        authStorage.getExpiresAt(),
+
     mustChangePassword: false,
 };
 
@@ -24,8 +30,12 @@ const authSlice = createSlice({
             } = action.payload;
 
             state.user = user;
+
             state.isAuthenticated = true;
-            state.sessionExpiresAt = expiresAt;
+
+            state.sessionExpiresAt =
+                expiresAt;
+
             state.mustChangePassword =
                 mustChangePassword;
         },
@@ -34,20 +44,38 @@ const authSlice = createSlice({
             state.user = action.payload;
         },
 
-        setMustChangePassword: (state, action) => {
+        setSessionExpiration: (
+            state,
+            action
+        ) => {
+            state.sessionExpiresAt =
+                action.payload;
+        },
+
+        setMustChangePassword: (
+            state,
+            action
+        ) => {
             state.mustChangePassword =
                 action.payload;
         },
 
         clearCredentials: (state) => {
             state.user = null;
+
             state.isAuthenticated = false;
+
             state.sessionExpiresAt = null;
+
             state.mustChangePassword = false;
         },
 
-        setInitialized: (state, action) => {
-            state.isInitialized = action.payload;
+        setInitialized: (
+            state,
+            action
+        ) => {
+            state.isInitialized =
+                action.payload;
         },
     },
 });
@@ -55,6 +83,7 @@ const authSlice = createSlice({
 export const {
     setCredentials,
     setUser,
+    setSessionExpiration,
     setMustChangePassword,
     clearCredentials,
     setInitialized,
