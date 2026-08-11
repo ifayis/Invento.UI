@@ -5,6 +5,7 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import LoginPage from "@/features/auth/pages/LoginPage";
+import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
 import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 
 import NotFoundPage from "@/features/errors/pages/NotFoundPage";
@@ -15,13 +16,18 @@ const AppRouter = () => {
             {/* Public Routes */}
             <Route element={<AuthLayout />}>
                 <Route
+                    path="/register"
+                    element={<RegisterPage />}
+                />
+
+                <Route
                     path="/login"
                     element={<LoginPage />}
                 />
 
                 <Route
-                    path="/register"
-                    element={<RegisterPage />}
+                    path="/forgot-password"
+                    element={<ForgotPasswordPage />}
                 />
             </Route>
 
