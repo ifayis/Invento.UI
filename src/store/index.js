@@ -3,7 +3,9 @@ import {
 } from "@reduxjs/toolkit";
 
 import { baseApi } from "@/api/baseApi";
+
 import authReducer from "@/features/auth/authSlice";
+import profileReducer from "@/features/profile/profileSlice";
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +13,8 @@ export const store = configureStore({
             baseApi.reducer,
 
         auth: authReducer,
+
+        profile: profileReducer,
     },
 
     middleware: (getDefaultMiddleware) =>
