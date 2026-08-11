@@ -3,6 +3,7 @@ import {
     ShieldCheck,
 } from "lucide-react";
 
+import { Link } from "react-router-dom";
 import LoginForm from "@/features/auth/components/LoginForm";
 
 const LoginPage = () => {
@@ -92,6 +93,23 @@ const LoginPage = () => {
                         </div>
 
                         <LoginForm />
+
+                        <div className="mt-8 text-center">
+
+                            <p className="text-sm text-slate-500 dark:text-slate-400">
+
+                                Don't have an account?{" "}
+
+                                <Link
+                                    to="/register"
+                                    className="font-semibold text-slate-950 underline-offset-4 hover:underline dark:text-white"
+                                >
+                                    Create an account
+                                </Link>
+
+                            </p>
+
+                        </div>
 
                         <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-400">
                             <span>
