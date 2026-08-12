@@ -5,7 +5,7 @@ export const forgotPasswordApi =
     baseApi.injectEndpoints({
         endpoints: (builder) => ({
             forgotPassword: builder.mutation({
-                query: ({ email }) => ({
+                query: (email) => ({
                     url: API_ENDPOINTS.AUTH.FORGOT_PASSWORD,
                     method: "POST",
                     body: {

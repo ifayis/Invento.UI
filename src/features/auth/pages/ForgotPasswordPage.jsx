@@ -36,7 +36,7 @@ const ForgotPasswordPage = () => {
 
         toast.success(
             data?.message ||
-                "If the email exists, password reset instructions have been sent."
+            "If the email exists, password reset instructions have been sent."
         );
     }, [isSuccess, data]);
 
@@ -81,9 +81,7 @@ const ForgotPasswordPage = () => {
 
         setValidationError("");
 
-        await forgotPassword({
-            email: normalizedEmail,
-        });
+        await forgotPassword(normalizedEmail);
     };
 
     const handleEmailChange = (event) => {
@@ -321,10 +319,9 @@ const ForgotPasswordPage = () => {
                                                 dark:bg-slate-950
                                                 dark:text-white
                                                 dark:placeholder:text-slate-500
-                                                ${
-                                                    validationError
-                                                        ? "border-red-400 focus:border-red-500 focus:ring-red-500/10"
-                                                        : "border-slate-200 focus:border-slate-900 focus:ring-slate-900/10 dark:border-slate-800 dark:focus:border-white dark:focus:ring-white/10"
+                                                ${validationError
+                                                    ? "border-red-400 focus:border-red-500 focus:ring-red-500/10"
+                                                    : "border-slate-200 focus:border-slate-900 focus:ring-slate-900/10 dark:border-slate-800 dark:focus:border-white dark:focus:ring-white/10"
                                                 }
                                             `}
                                         />

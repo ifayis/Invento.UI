@@ -6,9 +6,9 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import LoginPage from "@/features/auth/pages/LoginPage";
 import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
+import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
 import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 
-import NotFoundPage from "@/features/errors/pages/NotFoundPage";
 import ProtectedRoute from "./ProtectedRoute";
 const AppRouter = () => {
     return (
@@ -28,6 +28,11 @@ const AppRouter = () => {
                 <Route
                     path="/forgot-password"
                     element={<ForgotPasswordPage />}
+                />
+
+                <Route
+                    path="/reset-password"
+                    element={<ResetPasswordPage />}
                 />
             </Route>
 
