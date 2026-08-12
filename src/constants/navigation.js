@@ -10,6 +10,7 @@ import {
     BarChart3,
     Building2,
     Settings,
+    UserRound,
 } from "lucide-react";
 
 export const navigation = [
@@ -62,6 +63,11 @@ export const navigation = [
         title: "Company",
         path: "/company",
         icon: Building2,
+    },
+    {
+        title: "Profile",
+        path: "/settings/profile",
+        icon: UserRound,
     },
     {
         title: "Settings",

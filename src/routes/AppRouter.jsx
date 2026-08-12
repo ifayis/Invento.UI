@@ -7,6 +7,8 @@ import RegisterPage from "@/features/auth/pages/RegisterPage";
 import LoginPage from "@/features/auth/pages/LoginPage";
 import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
+import ProfilePage from "@/features/profile/pages/ProfilePage";
+import SettingsPage from "@/features/settings/pages/SettingsPage";
 import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 
 import ProtectedRoute from "./ProtectedRoute";
@@ -52,6 +54,16 @@ const AppRouter = () => {
                 <Route
                     path="/dashboard"
                     element={<DashboardPage />}
+                />
+
+                <Route
+                    path="/settings/profile"
+                    element={<ProfilePage />}
+                />
+
+                <Route
+                    path="/settings"
+                    element={<SettingsPage />}
                 />
             </Route>
 
