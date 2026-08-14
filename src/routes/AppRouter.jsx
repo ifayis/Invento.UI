@@ -9,6 +9,7 @@ import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
 import ProfilePage from "@/features/profile/pages/ProfilePage";
 import SettingsPage from "@/features/settings/pages/SettingsPage";
+import CompanyPage from "@/features/company/pages/CompanyPage";
 import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 
 import ProtectedRoute from "./ProtectedRoute";
@@ -64,6 +65,11 @@ const AppRouter = () => {
                 <Route
                     path="/settings"
                     element={<SettingsPage />}
+                />
+
+                <Route
+                    path="/company"
+                    element={<CompanyPage />}
                 />
             </Route>
 
